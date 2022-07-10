@@ -2,24 +2,26 @@ import encodings
 import os 
 
 def run():
-    print("funciona")
+    pass
 
 def menu():
     print(" 1.Iniciar Juego \n 2.Creador \n 3.Cerrar Juego")
-    opcion = int(input("Por Favor Eliga una opción: "))
+    opcion = input("Por Favor Eliga una opción: ")
     try:
-        if opcion == 1:
+        if opcion == '1':
             os.system("clear")
             run()
 
-        elif opcion ==2:
+        elif opcion == '2':
             os.system("clear")
             print("hector rafael")
 
-        elif opcion ==3: 
+        elif opcion == '3': 
             os.system("clear")
             print("Thanks ú! ")
             quit()
+        elif opcion.isnumeric() == False:
+            raise ValueError("Only Numbers")
 
         else:
             raise ValueError("Inserte un valor válido")
