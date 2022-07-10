@@ -14,7 +14,7 @@ def menu():
 
         elif opcion ==2:
             os.system("clear")
-            print("Hector Rafael")
+            print("hector rafael")
 
         elif opcion ==3: 
             os.system("clear")
