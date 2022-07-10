@@ -30,6 +30,9 @@ def menu():
         print(ve)
         menu()
         
+def finish():
+    print("Felicidades!")
+    #perdiste o ganaste
 
 
 if __name__ == "__main__":
