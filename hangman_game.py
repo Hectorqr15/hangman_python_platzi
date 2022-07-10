@@ -1,8 +1,33 @@
 import encodings
 import os 
+import random
+import ast
+from random import randint
+
+def data():
+    #data = []
+    with open("./archivos/data.txt", 'r', encoding='utf-8') as f: 
+        data = f.read().splitlines()
+    return data[randint(0,len(data))]
+    
 
 def run():
-    pass
+    word = data()
+    incognita = []
+    print(word)
+    print("Seleccione una letra: ")
+    for i in range(len(word)):
+        incognita.append(" - ")
+    print(incognita)
+    
+    while list(word) != incognita: 
+        #Que sola sea una letra con try
+        letra= str(input("Por favor digite un numero: "))
+        for i in range(len(word)):
+            if letra == word[i]:
+                incognita[i] = letra
+                print(incognita)
+
 
 def menu():
     print(" 1.Iniciar Juego \n 2.Creador \n 3.Cerrar Juego")
