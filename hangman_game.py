@@ -10,24 +10,45 @@ def data():
         data = f.read().splitlines()
     return data[randint(0,len(data))]
     
+def normalize(s):
+    s.lower()
+    replacements = (
+        ("á", "a"),
+        ("é", "e"),
+        ("í", "i"),
+        ("ó", "o"),
+        ("ú", "u"),
+    )
+    for a, b in replacements:
+        s = s.replace(a, b).replace(a.upper(), b.upper())
+    return s
 
 def run():
-    word = data()
+    word = normalize(data())
     incognita = []
-    print(word)
     print("Seleccione una letra: ")
     for i in range(len(word)):
         incognita.append(" - ")
-    print(incognita)
     
     while list(word) != incognita: 
+        print(word)
+        print(incognita)
         #Que sola sea una letra con try
-        letra= str(input("Por favor digite un numero: "))
-        for i in range(len(word)):
-            if letra == word[i]:
-                incognita[i] = letra
-                print(incognita)
+        try: 
+            letra = input("Por favor digite una letra: ")
+            if len(letra) > 1 or len(letra) == 0:
+                raise ValueError("No mas de una letra")
+            elif letra.isnumeric() == True:
+                raise ValueError("Only String")
+            else:
+                for i in range(len(word)):
+                    if letra == word[i]:
+                        incognita[i] = letra
+            os.system("clear")
 
+        except ValueError as ve: 
+            os.system("clear")
+            print(ve)
 
 def menu():
     print(" 1.Iniciar Juego \n 2.Creador \n 3.Cerrar Juego")
